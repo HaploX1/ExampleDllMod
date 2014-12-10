@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+	<ThingDef Name="BuildingBase" Abstract="True">
+		<category>Building</category>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>Example_DarkMatterGenerator</defName>
+		<eType>BuildingComplex</eType>
+		<label>Dark Matter Generator</label>
+		<description>A generator that creates energy out of dark matter.</description>
+		<thingClass>DarkMatterGenerator.Building_DarkMatterGenerator</thingClass>
+		<graphicPath>Things/Building/DarkMatterGenerator</graphicPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<altitudeLayer>Waist</altitudeLayer>
+		<passability>Impassable</passability>
+		<statBases>
+			<MaxHealth>350</MaxHealth>
+			<WorkToMake>1500</WorkToMake>
+			<Flammability>0.0</Flammability>
+			<Beauty>12</Beauty>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(1,1)</size>
+		<selectable>true</selectable>
+		<rotatable>true</rotatable>
+		<designationCategory>Power</designationCategory>
+		<building>
+			<ignoreNeedsPower>true</ignoreNeedsPower>
+		</building>
+		<costList>
+			<Steel>120</Steel>
+		</costList>
+		<constructEffect>ConstructMetal</constructEffect>
+		<graphicOverdraw>false</graphicOverdraw>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<ChunkSlag>1</ChunkSlag>
+		</killedLeavings>
+		<comps>
+			<li>
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li>
+				<compClass>CompGlower</compClass>
+				<glowRadius>5</glowRadius>
+				<glowColor>(10,15,75,0)</glowColor>
+			</li>
+		</comps>
+	</ThingDef>
+	
+</Buildings>

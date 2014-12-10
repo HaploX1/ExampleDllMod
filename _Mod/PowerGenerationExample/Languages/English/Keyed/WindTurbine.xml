@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<!-- Wind Turbine -->
+	<WindTurbineExample_WindPathIsBlocked>Wind path blocked - reduced power output</WindTurbineExample_WindPathIsBlocked>
+	<WindTurbineExample_WindPathIsBlockedBy>Blocked by</WindTurbineExample_WindPathIsBlockedBy>
+	<WindTurbineExample_WindPathIsBlockedByRoof>Blocked by roof</WindTurbineExample_WindPathIsBlockedByRoof>
+	
+</LanguageData>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+	<ThingDef Name="BuildingBase" Abstract="True">
+		<category>Building</category>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>Example_WindTurbineGenerator</defName>
+		<eType>BuildingComplex</eType>
+		<label>Wind Turbine</label>
+		<description>A turbine that harness wind to generate power.</description>
+		<thingClass>WindTurbine.Building_PowerPlantWindTurbine</thingClass>
+		<graphicPath>Things/Building/WindTurbine/wind turbine_frame1</graphicPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>130</pathCost>
+		<fillPercent>0.5</fillPercent>
+		<statBases>
+			<MaxHealth>150</MaxHealth>
+			<WorkToMake>2500</WorkToMake>
+			<Flammability>0.4</Flammability>
+			<Beauty>-12</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(5,2)</size>
+		<selectable>true</selectable>
+		<rotatable>true</rotatable>
+		<designationCategory>Power</designationCategory>
+		<building>
+			<ignoreNeedsPower>true</ignoreNeedsPower>
+		</building>
+		<costList>
+			<Steel>125</Steel>
+		</costList>
+		<constructEffect>ConstructMetal</constructEffect>
+		<graphicOverdraw>false</graphicOverdraw>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<sunShadowInfo>
+			<baseWidth>0.2</baseWidth>
+			<baseHeight>0.8</baseHeight>
+			<tallness>1.0</tallness>
+		</sunShadowInfo>
+		<killedLeavings>
+			<ChunkSlag>1</ChunkSlag>
+		</killedLeavings>
+		<comps>
+			<li>
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>-750</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+	</ThingDef>
+	
+</Buildings>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>PowerGen Ex</name>
+	<author>Haplo, Mrofa</author>
+	<targetVersion>Alpha 7</targetVersion>
+	<description>This is an example mod with two power generation buildings
+-Dark Energy Generator
+The generator provides energy for two days, but needs some power to recharge afterwards.
+He can be used as an emergency generator.
+-Wind Turbine
+The wind turbine uses the wind to generate power.
+It needs a clear wind path before and behind the blades.
+Thanks to Architect for some of the ideas
+
+For the SourceCode, look at the example dll project:
+http://ludeon.com/forums/index.php?topic=3408.0
+</description>
+</ModMetaData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<!-- Dark Matter Generator -->
+	<DarkMatterGenerator_Status>Status:</DarkMatterGenerator_Status>
+	<DarkMatterGenerator_Offline>-= Offline =-</DarkMatterGenerator_Offline>
+	<DarkMatterGenerator_Recharging>Recharging</DarkMatterGenerator_Recharging>
+	<DarkMatterGenerator_Active>Active</DarkMatterGenerator_Active>
+	
+</LanguageData>
