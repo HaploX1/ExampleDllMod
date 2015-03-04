@@ -6,8 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using UnityEngine;         
-using VerseBase;           // Needed for MaterialPool
+using UnityEngine;
 using Verse;               
 //using Verse.AI;          
 //using Verse.Sound;       
@@ -34,7 +33,7 @@ namespace WindTurbine
         private bool disablePowerRandomness = false;
 
         // This is the graphics container:
-        public static Graphic_Single[] graphic = null;
+        public static Graphic[] graphic = null;
 
         private const int arraySize = 12; // Turn animation off => set to 1
         private string graphicPathAdditionWoNumber = "_frame"; // everything before this will be used for the other file names
@@ -104,8 +103,7 @@ namespace WindTurbine
                 string graphicRealPath = graphicRealPathBase + graphicPathAdditionWoNumber + ( i + 1 ).ToString();
 
                 // Set the graphic
-                Material mat = MaterialPool.MatFrom( graphicRealPath, def.shader );
-                graphic[i] = new Graphic_Single( mat, false );
+                graphic[i] = GraphicDatabase.Get<Graphic_Single>(graphicRealPath, def.shader);
             }
         }
 
@@ -179,7 +177,7 @@ namespace WindTurbine
             {
                 ticksSinceUpdateWeather = 0;
                 WeatherDef weather = Find.WeatherManager.curWeather;
-                powerComp.powerOutput = -( powerComp.props.basePowerConsumption * weather.windIntensity );
+                powerComp.powerOutput = -( powerComp.props.basePowerConsumption * weather.windSpeedFactor );
 
                 // Just for a little bit randomness..
                 if (!disablePowerRandomness)

@@ -2,7 +2,7 @@
 <ModMetaData>
 	<name>PowerGen Ex</name>
 	<author>Haplo, Mrofa</author>
-	<targetVersion>Alpha 7</targetVersion>
+	<targetVersion>Alpha 9</targetVersion>
 	<description>This is an example mod with two power generation buildings
 -Dark Energy Generator
 The generator provides energy for two days, but needs some power to recharge afterwards.

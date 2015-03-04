@@ -8,6 +8,7 @@
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
@@ -24,7 +25,7 @@
 		<fillPercent>0.5</fillPercent>
 		<statBases>
 			<MaxHealth>150</MaxHealth>
-			<WorkToMake>2500</WorkToMake>
+			<WorkToMake>3300</WorkToMake>
 			<Flammability>0.4</Flammability>
 			<Beauty>-12</Beauty>
 		</statBases>
@@ -37,24 +38,24 @@
 			<ignoreNeedsPower>true</ignoreNeedsPower>
 		</building>
 		<costList>
-			<Steel>125</Steel>
+			<Steel>100</Steel>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
 		<graphicOverdraw>false</graphicOverdraw>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<sunShadowInfo>
 			<baseWidth>0.2</baseWidth>
 			<baseHeight>0.8</baseHeight>
 			<tallness>1.0</tallness>
 		</sunShadowInfo>
-		<killedLeavings>
-			<ChunkSlag>1</ChunkSlag>
-		</killedLeavings>
+    <placeWorkers>
+      <li>PlaceWorker_WindTurbine</li>
+    </placeWorkers>
 		<comps>
 			<li>
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>-750</basePowerConsumption>
+				<basePowerConsumption>-2000</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
+				<powerToggleable>false</powerToggleable>
 			</li>
 		</comps>
 	</ThingDef>

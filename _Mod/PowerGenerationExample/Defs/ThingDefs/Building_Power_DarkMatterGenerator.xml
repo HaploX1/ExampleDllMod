@@ -8,6 +8,8 @@
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
@@ -20,6 +22,8 @@
 		<graphicClass>Graphic_Single</graphicClass>
 		<altitudeLayer>Waist</altitudeLayer>
 		<passability>Impassable</passability>
+		<fillPercent>0.8</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
 		<statBases>
 			<MaxHealth>350</MaxHealth>
 			<WorkToMake>1500</WorkToMake>
@@ -39,15 +43,15 @@
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
 		<graphicOverdraw>false</graphicOverdraw>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<killedLeavings>
-			<ChunkSlag>1</ChunkSlag>
+			<ChunkSlagSteel>1</ChunkSlagSteel>
 		</killedLeavings>
 		<comps>
 			<li>
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>1</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
+				<powerToggleable>true</powerToggleable>
 			</li>
 			<li>
 				<compClass>CompGlower</compClass>

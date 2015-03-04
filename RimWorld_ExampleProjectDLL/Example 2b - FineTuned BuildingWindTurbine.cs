@@ -6,7 +6,6 @@ using System.Text;
 
 using UnityEngine;
 using Verse;
-using VerseBase;
 using RimWorld;
 
 
@@ -22,7 +21,7 @@ namespace WindTurbine
         // ==================================
 
 
-        public static Graphic_Single[] graphic = null;
+        public static Graphic[] graphic = null;
 
         private const int arraySize = 12; // Turn animation off => set to 1
         private string graphicPathAdditionWoNumber = "_frame"; // everything before this will be used for the other file names
@@ -70,8 +69,8 @@ namespace WindTurbine
             maxWindIntensity = 0f;
             foreach (WeatherDef wDef in DefDatabase<WeatherDef>.AllDefs)
             {
-                if (wDef.windIntensity > maxWindIntensity)
-                    maxWindIntensity = wDef.windIntensity;
+                if (wDef.windSpeedFactor > maxWindIntensity)
+                    maxWindIntensity = wDef.windSpeedFactor;
             }
 
             CheckWindPathBlocked(ref windPathCells, out windPathBlockedCells, out windPathBlockedByThings);
@@ -106,8 +105,7 @@ namespace WindTurbine
                 string graphicRealPath = graphicRealPathBase + graphicPathAdditionWoNumber + (i + 1).ToString();
 
                 // Set the graphic
-                Material mat = MaterialPool.MatFrom(graphicRealPath, def.shader);
-                graphic[i] = new Graphic_Single(mat, false);
+                graphic[i] = GraphicDatabase.Get<Graphic_Single>(graphicRealPath, def.shader, def.DrawSize, def.defaultColor, def.defaultColorTwo);
             }
         }
 
@@ -159,7 +157,7 @@ namespace WindTurbine
             {
                 ticksSinceWeatherUpdate = 0;
                 WeatherDef weather = Find.WeatherManager.curWeather;
-                powerComp.powerOutput = -(powerComp.props.basePowerConsumption * weather.windIntensity);
+                powerComp.powerOutput = -( powerComp.props.basePowerConsumption * weather.windSpeedFactor );
 
                 // Just for a little bit wind randomness..
                 powerComp.powerOutput += (float)Rand.RangeInclusive(-20, 20);
