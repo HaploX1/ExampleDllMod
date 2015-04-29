@@ -14,7 +14,6 @@
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>Example_DarkMatterGenerator</defName>
-		<eType>BuildingComplex</eType>
 		<label>Dark Matter Generator</label>
 		<description>A generator that creates energy out of dark matter.</description>
 		<thingClass>DarkMatterGenerator.Building_DarkMatterGenerator</thingClass>
@@ -25,7 +24,7 @@
 		<fillPercent>0.8</fillPercent>
 		<castEdgeShadows>true</castEdgeShadows>
 		<statBases>
-			<MaxHealth>350</MaxHealth>
+			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToMake>1500</WorkToMake>
 			<Flammability>0.0</Flammability>
 			<Beauty>12</Beauty>

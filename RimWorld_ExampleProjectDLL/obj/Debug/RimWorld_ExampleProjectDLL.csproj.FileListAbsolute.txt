@@ -20,7 +20,7 @@ E:\Spiele\_Indie Games\RimWorld\WORK\_Projects\_Programming Mod-dll\_Alpha8\RimW
 F:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorld_ExampleProjectDLL.csprojResolveAssemblyReference.cache
 F:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorld_ExampleProjectDLL.dll
 F:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorld_ExampleProjectDLL.pdb
-D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorld_ExampleProjectDLL.dll
-D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\bin\Debug\RimWorld_ExampleProjectDLL.dll
-D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\bin\Debug\RimWorld_ExampleProjectDLL.pdb
-D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorld_ExampleProjectDLL.pdb
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\bin\Debug\RimWorldExampleProjectDLL.dll
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\bin\Debug\RimWorldExampleProjectDLL.pdb
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorldExampleProjectDLL.dll
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorldExampleProjectDLL.pdb

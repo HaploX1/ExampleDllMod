@@ -366,7 +366,7 @@ namespace DarkMatterGenerator
         ///// This creates selection buttons
         ///// </summary>
         ///// <returns></returns>
-        //public override IEnumerable<Command> GetCommands()
+        //public override IEnumerable<Command> GetGizmos()
         //{
         //    IList<Command> list = new List<Command>();
 
@@ -383,7 +383,7 @@ namespace DarkMatterGenerator
         //    list.Add(optF);
 
         //    // Adding the base.GetCommands() when not empty
-        //    IEnumerable<Command> baseList = base.GetCommands();
+        //    IEnumerable<Command> baseList = base.GetGizmos();
         //    if (baseList != null)
         //        return list.AsEnumerable<Command>().Concat(baseList);
         //    else

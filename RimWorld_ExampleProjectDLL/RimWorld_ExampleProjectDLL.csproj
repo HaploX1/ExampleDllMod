@@ -7,11 +7,12 @@
     <ProjectGuid>{A36BEEB2-7379-475B-B537-827E34571962}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RimWorld_ExampleProjectDLL</RootNamespace>
-    <AssemblyName>RimWorld_ExampleProjectDLL</AssemblyName>
+    <RootNamespace>RimWorldExampleProjectDLL</RootNamespace>
+    <AssemblyName>RimWorldExampleProjectDLL</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
