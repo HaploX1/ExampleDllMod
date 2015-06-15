@@ -180,7 +180,7 @@ namespace DarkMatterGenerator
             glowerComp = base.GetComp<CompGlower>();
 
             // Preset the PowerOutput to 0 (negative values will draw power from the powernet)
-            powerComp.powerOutput = 0;
+            powerComp.PowerOutput = 0;
 
         }
 
@@ -288,7 +288,7 @@ namespace DarkMatterGenerator
                         return;
                     }
 
-                    powerComp.powerOutput = powerOutputCharging; // value: -250
+                    powerComp.PowerOutput = powerOutputCharging; // value: -250
                 }
 
                 // phase == active
@@ -306,7 +306,7 @@ namespace DarkMatterGenerator
                     // Light up the glower
                     glowerComp.Lit = true;
 
-                    powerComp.powerOutput = powerOutputActive; // value: 1000
+                    powerComp.PowerOutput = powerOutputActive; // value: 1000
                 }
 
             }
@@ -322,7 +322,7 @@ namespace DarkMatterGenerator
                 // set phase to offline
                 phase = Phase.offline;
 
-                powerComp.powerOutput = 0;
+                powerComp.PowerOutput = 0;
             }
         }
 

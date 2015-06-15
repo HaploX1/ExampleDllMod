@@ -17,15 +17,18 @@
 		<label>Dark Matter Generator</label>
 		<description>A generator that creates energy out of dark matter.</description>
 		<thingClass>DarkMatterGenerator.Building_DarkMatterGenerator</thingClass>
-		<graphicPath>Things/Building/DarkMatterGenerator</graphicPath>
-		<graphicClass>Graphic_Single</graphicClass>
+		<graphicData>
+			<texPath>Things/Building/DarkMatterGenerator</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
 		<altitudeLayer>Waist</altitudeLayer>
 		<passability>Impassable</passability>
 		<fillPercent>0.8</fillPercent>
 		<castEdgeShadows>true</castEdgeShadows>
 		<statBases>
 			<MaxHitPoints>350</MaxHitPoints>
-			<WorkToMake>1500</WorkToMake>
+			<WorkToMake>1800</WorkToMake>
 			<Flammability>0.0</Flammability>
 			<Beauty>12</Beauty>
 		</statBases>
@@ -41,7 +44,6 @@
 			<Steel>120</Steel>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
-		<graphicOverdraw>false</graphicOverdraw>
 		<killedLeavings>
 			<ChunkSlagSteel>1</ChunkSlagSteel>
 		</killedLeavings>

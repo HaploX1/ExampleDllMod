@@ -94,8 +94,8 @@ namespace WindTurbine
             graphic = new Graphic_Single[arraySize];
 
             // Get the base path (without _frameXX)
-            int indexOf_frame = def.graphicPath.ToLower().LastIndexOf( graphicPathAdditionWoNumber );
-            string graphicRealPathBase = def.graphicPath.Remove( indexOf_frame );
+            int indexOf_frame = def.graphicData.texPath.ToLower().LastIndexOf(graphicPathAdditionWoNumber);
+            string graphicRealPathBase = def.graphicData.texPath.Remove( indexOf_frame );
 
             // fill the graphic array
             for ( int i = 0; i < arraySize; i++ )
@@ -103,7 +103,7 @@ namespace WindTurbine
                 string graphicRealPath = graphicRealPathBase + graphicPathAdditionWoNumber + ( i + 1 ).ToString();
 
                 // Set the graphic
-                graphic[i] = GraphicDatabase.Get<Graphic_Single>(graphicRealPath, def.shader);
+                graphic[i] = GraphicDatabase.Get<Graphic_Single>(graphicRealPath, def.graphic.Shader);
             }
         }
 
@@ -150,7 +150,7 @@ namespace WindTurbine
                 Find.RoofGrid.Roofed( Position ) )
             {
                 activeGraphicFrame = 0;
-                powerComp.powerOutput = 0;
+                powerComp.PowerOutput = 0;
                 return;
             }
 
@@ -167,7 +167,7 @@ namespace WindTurbine
                         activeGraphicFrame = 0;
 
                     // Tell the MapDrawer that here is something thats changed
-                    Find.MapDrawer.MapChanged(Position, MapChangeType.Things, true, false);
+                    Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Things, true, false);
                 }
             }
 
@@ -177,16 +177,16 @@ namespace WindTurbine
             {
                 ticksSinceUpdateWeather = 0;
                 WeatherDef weather = Find.WeatherManager.curWeather;
-                powerComp.powerOutput = -( powerComp.props.basePowerConsumption * weather.windSpeedFactor );
+                powerComp.PowerOutput = -( powerComp.props.basePowerConsumption * weather.windSpeedFactor );
 
                 // Just for a little bit randomness..
                 if (!disablePowerRandomness)
-                    powerComp.powerOutput += Rand.RangeInclusive( -20, 20 );
+                    powerComp.PowerOutput += Rand.RangeInclusive(-20, 20);
 
                 // If obstacled, reduce production to 1/3
                 windPathBlocked = !CheckWindPath( ref windPathCells, out windPathBlocker );
                 if ( windPathBlocked )
-                    powerComp.powerOutput /= 3;
+                    powerComp.PowerOutput /= 3;
 
             }
         }
@@ -301,7 +301,7 @@ namespace WindTurbine
         // Find the cells in a cone before and behind the wind turbine
         // This is a bit difficult to understand. You don't need to understand how this works. 
         // Just know that this will define the cells, where to look for blocker items
-        private IEnumerable<IntVec3> GetCellsOfConeBeforeAndBehindObject( IntVec3 thingCenter, IntRot thingRot, IntVec2 thingSize )
+        private IEnumerable<IntVec3> GetCellsOfConeBeforeAndBehindObject( IntVec3 thingCenter, Rot4 thingRot, IntVec2 thingSize )
         {
 
             //  +++          +xx+
@@ -322,28 +322,28 @@ namespace WindTurbine
             int extensionLength = 5;
 
             // Find base points to work with
-            if ( thingRot == IntRot.north )
+            if ( thingRot == Rot4.North )
             {
                 numBaseX1 = thingCenter.x - (thingSize.x + 1) / 2 + 1;
                 numBaseX2 = numBaseX1 + thingSize.x - 1;
                 numBaseZ1 = thingCenter.z - (thingSize.z + 1) / 2 + 1;
                 numBaseZ2 = numBaseZ1 + thingSize.z - 1;
             }
-            else if ( thingRot == IntRot.east )
+            else if (thingRot == Rot4.East)
             {
                 numBaseX1 = thingCenter.x - (thingSize.z + 1) / 2 + 1;
                 numBaseX2 = numBaseX1 + thingSize.z - 1;
                 numBaseZ1 = thingCenter.z - thingSize.x / 2;
                 numBaseZ2 = numBaseZ1 + thingSize.x - 1;
             }
-            else if ( thingRot == IntRot.south )
+            else if (thingRot == Rot4.South)
             {
                 numBaseX1 = thingCenter.x - thingSize.x / 2;
                 numBaseX2 = numBaseX1 + thingSize.x - 1;
                 numBaseZ1 = thingCenter.z - thingSize.z / 2;
                 numBaseZ2 = numBaseZ1 + thingSize.z - 1;
             }
-            else //if ( thingRot == IntRot.west )
+            else //if ( thingRot == Rot4.West )
             {
                 numBaseX1 = thingCenter.x - thingSize.z / 2;
                 numBaseX2 = numBaseX1 + thingSize.z - 1;
@@ -354,7 +354,7 @@ namespace WindTurbine
             IntVec3 intVec3;
 
             // Get the cells from here if the rotation is north or south
-            if ( Rotation == IntRot.north || Rotation == IntRot.south )
+            if (Rotation == Rot4.North || Rotation == Rot4.South)
             {
                 // Base cone
                 num1X1 = numBaseX1 + 0;
@@ -443,7 +443,7 @@ namespace WindTurbine
             }
 
             // Get the cells from here if the rotation is east or west
-            if ( Rotation == IntRot.east || Rotation == IntRot.west )
+            if (Rotation == Rot4.East || Rotation == Rot4.West)
             {
                 // Base cone
                 num1X1 = numBaseX1 - 1;

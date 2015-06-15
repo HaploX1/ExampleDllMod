@@ -16,8 +16,16 @@
 		<label>Wind Turbine</label>
 		<description>A turbine that harness wind to generate power.</description>
 		<thingClass>WindTurbine.Building_PowerPlantWindTurbine</thingClass>
-		<graphicPath>Things/Building/WindTurbine/wind turbine_frame1</graphicPath>
-		<graphicClass>Graphic_Single</graphicClass>
+		<graphicData>
+			<texPath>Things/Building/WindTurbine/wind turbine_frame1</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,2)</drawSize>
+			<shadowInfo>
+				<baseWidth>0.2</baseWidth>
+				<baseHeight>0.8</baseHeight>
+				<tallness>1.0</tallness>
+			</shadowInfo>
+		</graphicData>
 		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>Impassable</passability>
 		<pathCost>130</pathCost>
@@ -40,12 +48,6 @@
 			<Steel>100</Steel>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
-		<graphicOverdraw>false</graphicOverdraw>
-		<graphicSunShadowInfo>
-			<baseWidth>0.2</baseWidth>
-			<baseHeight>0.8</baseHeight>
-			<tallness>1.0</tallness>
-		</graphicSunShadowInfo>
     <placeWorkers>
       <li>PlaceWorker_WindTurbine</li>
     </placeWorkers>

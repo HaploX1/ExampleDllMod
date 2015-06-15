@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
   
-	<DarkMatterGenerator.label>Dark Matter Generator</DarkMatterGenerator.label>
-	<DarkMatterGenerator.description>A generator that creates energy out of dark matter. Can be used as an emergency power generator when he is recharged.</DarkMatterGenerator.description>
+	<Example_DarkMatterGenerator.label>Dark Matter Generator</Example_DarkMatterGenerator.label>
+	<Example_DarkMatterGenerator.description>A generator that creates energy out of dark matter. Can be used as an emergency power generator when he is recharged.</Example_DarkMatterGenerator.description>
 	
 </LanguageData>
