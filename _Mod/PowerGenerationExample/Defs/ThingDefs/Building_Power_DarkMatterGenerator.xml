@@ -14,15 +14,18 @@
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>Example_DarkMatterGenerator</defName>
+		<thingClass>DarkMatterGenerator.Building_DarkMatterGenerator</thingClass>
 		<label>Dark Matter Generator</label>
 		<description>A generator that creates energy out of dark matter.</description>
-		<thingClass>DarkMatterGenerator.Building_DarkMatterGenerator</thingClass>
 		<graphicData>
 			<texPath>Things/Building/DarkMatterGenerator</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
 		</graphicData>
-		<altitudeLayer>Waist</altitudeLayer>
+		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>Impassable</passability>
 		<fillPercent>0.8</fillPercent>
 		<castEdgeShadows>true</castEdgeShadows>
@@ -42,24 +45,28 @@
 		</building>
 		<costList>
 			<Steel>120</Steel>
+			<Components>1</Components>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
 		<killedLeavings>
 			<ChunkSlagSteel>1</ChunkSlagSteel>
 		</killedLeavings>
 		<comps>
-			<li>
+			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>1</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
-				<powerToggleable>true</powerToggleable>
 			</li>
-			<li>
-				<compClass>CompGlower</compClass>
+			<li Class="CompProperties_Glower">
 				<glowRadius>5</glowRadius>
 				<glowColor>(10,15,75,0)</glowColor>
 			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>1</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 	</ThingDef>
-	
+
 </Buildings>

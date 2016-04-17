@@ -297,14 +297,10 @@ namespace DarkMatterGenerator
                     if (counter >= counterPhaseActiveMax) // counter >= 20000 ?
                     {
                         // Switch to recharge, glower off, counter 0
-                        glowerComp.Lit = false;
                         phase = Phase.recharging;
                         counter = 0;
                         return;
                     }
-
-                    // Light up the glower
-                    glowerComp.Lit = true;
 
                     powerComp.PowerOutput = powerOutputActive; // value: 1000
                 }
@@ -313,7 +309,6 @@ namespace DarkMatterGenerator
             else
             {
                 // Power off
-                glowerComp.Lit = false;
 
                 // save old phase
                 if (phase != Phase.offline)

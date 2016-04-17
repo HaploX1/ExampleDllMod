@@ -177,7 +177,7 @@ namespace WindTurbine
             {
                 ticksSinceUpdateWeather = 0;
                 WeatherDef weather = Find.WeatherManager.curWeather;
-                powerComp.PowerOutput = -( powerComp.props.basePowerConsumption * weather.windSpeedFactor );
+                powerComp.PowerOutput = -( powerComp.Props.basePowerConsumption * weather.windSpeedFactor );
 
                 // Just for a little bit randomness..
                 if (!disablePowerRandomness)

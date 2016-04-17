@@ -157,7 +157,7 @@ namespace WindTurbine
             {
                 ticksSinceWeatherUpdate = 0;
                 WeatherDef weather = Find.WeatherManager.curWeather;
-                powerComp.PowerOutput = -(powerComp.props.basePowerConsumption * weather.windSpeedFactor);
+                powerComp.PowerOutput = -(powerComp.Props.basePowerConsumption * weather.windSpeedFactor);
 
                 // Just for a little bit wind randomness..
                 powerComp.PowerOutput += (float)Rand.RangeInclusive(-20, 20);
@@ -227,7 +227,7 @@ namespace WindTurbine
             {
                 center = DrawPos + (Vector3.up * 0.1f),
                 size = BarSize,
-                fillPercent = powerComp.PowerOutput / (-powerComp.props.basePowerConsumption * maxWindIntensity),
+                fillPercent = powerComp.PowerOutput / (-powerComp.Props.basePowerConsumption * maxWindIntensity),
                 filledMat = BarFilledMat,
                 unfilledMat = BarUnfilledMat,
                 margin = 0.15f
