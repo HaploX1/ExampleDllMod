@@ -25,8 +25,10 @@
 				<rect>(0.05,0.05,0.95,0.95)</rect>
 			</damageData>
 		</graphicData>
-		<altitudeLayer>BuildingTall</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
+		<pathCost>150</pathCost>
+		<blockWind>false</blockWind>
 		<fillPercent>0.8</fillPercent>
 		<castEdgeShadows>true</castEdgeShadows>
 		<statBases>
@@ -45,7 +47,7 @@
 		</building>
 		<costList>
 			<Steel>120</Steel>
-			<Components>1</Components>
+			<Component>1</Component>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
 		<killedLeavings>

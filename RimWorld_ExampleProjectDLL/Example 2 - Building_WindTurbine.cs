@@ -23,7 +23,8 @@ namespace WindTurbine
     /// </summary>
     /// <author>Haplo</author>
     /// <permission>Usage of this code is free for all</permission>
-    class Building_WindTurbineEx : Building
+    [StaticConstructorOnStartup]
+    public class Building_WindTurbineEx : Building
     {
 
         #region Variables
@@ -90,6 +91,10 @@ namespace WindTurbine
         /// </summary>
         private void UpdateGraphics()
         {
+            // Check if graphic is already filled
+            if (graphic != null && graphic.Length > 0 && graphic[0] != null)
+                return;
+
             // resize the graphic array
             graphic = new Graphic_Single[arraySize];
 
@@ -102,8 +107,8 @@ namespace WindTurbine
             {
                 string graphicRealPath = graphicRealPathBase + graphicPathAdditionWoNumber + ( i + 1 ).ToString();
 
-                // Set the graphic
-                graphic[i] = GraphicDatabase.Get<Graphic_Single>(graphicRealPath, def.graphic.Shader);
+                // Set the graphic, use additional info from the xml data
+                graphic[i] = GraphicDatabase.Get<Graphic_Single>(graphicRealPath, def.graphic.Shader, def.graphic.drawSize, def.graphic.Color, def.graphic.ColorTwo);
             }
         }
 
@@ -258,7 +263,7 @@ namespace WindTurbine
         /// </summary>
         public override void DrawExtraSelectionOverlays()
         {
-            base.DrawExtraSelectionOverlays();
+            //base.DrawExtraSelectionOverlays();
 
             if ( windPathCells != null )
             {
@@ -290,7 +295,7 @@ namespace WindTurbine
                 if ( Find.RoofGrid.Roofed( cell ) )
                     return false;
 
-                foundBlocker = Find.ThingGrid.ThingsAt(cell).FirstOrDefault<Thing>( t => t.def.altitudeLayer == AltitudeLayer.BuildingTall );
+                foundBlocker = Find.ThingGrid.ThingsAt(cell).FirstOrDefault<Thing>( t => t.def.blockWind );
                 if ( foundBlocker != null )
                     return false;
             }

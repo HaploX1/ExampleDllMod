@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
-<!--  Disabled, because it is already defined in the DarkMatterGenerator (Abstracts with the same name must only be defined once!)
+	<!--  Disabled, because it is already defined in the DarkMatterGenerator (Abstracts with the same name must only be defined once!)
 	<ThingDef Name="BuildingBase" Abstract="True">
 		<category>Building</category>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
@@ -12,25 +12,23 @@
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 	</ThingDef>
 -->
-	
+
 	<ThingDef ParentName="BuildingBase">
 		<defName>Example_WindTurbineGenerator</defName>
-		<thingClass>WindTurbine.Building_PowerPlantWindTurbine</thingClass>
+		<thingClass>WindTurbine.Building_WindTurbineEx</thingClass>
 		<label>Wind Turbine</label>
 		<description>A turbine harnessing wind to generate power.</description>
 		<graphicData>
 			<texPath>Things/Building/WindTurbine/wind turbine_frame1</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,2)</drawSize>
-      <shadowData>
-        <volume>(0.2, 1.0, 0.8)</volume>
-      </shadowData>
-      <damageData>
-        <rect>(2,0.15,1,1.4)</rect>
-      </damageData>
+			<shadowData>
+				<volume>(0.2, 1.0, 0.8)</volume>
+			</shadowData>
 		</graphicData>
-		<altitudeLayer>BuildingTall</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
+		<pathCost>150</pathCost>
 		<fillPercent>0.5</fillPercent>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
@@ -41,7 +39,7 @@
 		<tickerType>Normal</tickerType>
 		<size>(5,2)</size>
 		<selectable>true</selectable>
-    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<rotatable>true</rotatable>
 		<designationCategory>Power</designationCategory>
 		<building>
@@ -49,20 +47,20 @@
 		</building>
 		<costList>
 			<Steel>100</Steel>
-      <Components>2</Components>
+			<Component>2</Component>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
-    <placeWorkers>
-      <li>PlaceWorker_WindTurbine</li>
-    </placeWorkers>
+		<placeWorkers>
+			<li>PlaceWorker_WindTurbine</li>
+		</placeWorkers>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>-2000</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
-      </li>
-      <li Class="CompProperties_Breakdownable"/>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 	</ThingDef>
-	
+
 </Buildings>

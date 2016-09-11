@@ -61,7 +61,7 @@ namespace DarkMatterGenerator
     /// </summary>
     /// <author>mrofa, Haplo</author>
     /// <permission>Usage of this code is .....</permission>
-    class Building_DarkMatterGenerator : Building
+    public class Building_DarkMatterGenerator : Building
     {
         
         // No real function, just test of tooltip
