@@ -141,10 +141,10 @@ namespace DarkMatterGenerator
         /// <summary>
         /// Do something after the object is spawned
         /// </summary>
-        public override void SpawnSetup()
+        public override void SpawnSetup(Map map)
         {
             // Do the work of the base class (Building)
-            base.SpawnSetup();
+            base.SpawnSetup(map);
 
             // Get refferences to the components CompPowerTrader and CompGlower
             SetPowerGlower();

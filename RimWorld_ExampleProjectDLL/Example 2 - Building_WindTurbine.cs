@@ -54,6 +54,7 @@ namespace WindTurbine
         private const string translateWindPathIsBlocked = "WindTurbineExample_WindPathIsBlocked";
         private const string translateWindPathIsBlockedBy = "WindTurbineExample_WindPathIsBlockedBy";
 
+        Map map;
 
         #endregion
 
@@ -64,9 +65,10 @@ namespace WindTurbine
         /// <summary>
         /// Do something after the object is spawned into the world
         /// </summary>
-        public override void SpawnSetup()
+        public override void SpawnSetup(Map map)
         {
-            base.SpawnSetup();
+            base.SpawnSetup(map);
+            this.map = map;
 
             powerComp = base.GetComp<CompPowerTrader>();
             powerComp.PowerOn = true;
@@ -149,10 +151,9 @@ namespace WindTurbine
         // Here is the main decision work of this building done
         private void DoTickerWork( int ticks )
         {
-
             // Power off OR Roofed Position
             if ( powerComp == null || !powerComp.PowerOn ||
-                Find.RoofGrid.Roofed( Position ) )
+                map.roofGrid.Roofed( Position ) )
             {
                 activeGraphicFrame = 0;
                 powerComp.PowerOutput = 0;
@@ -172,7 +173,7 @@ namespace WindTurbine
                         activeGraphicFrame = 0;
 
                     // Tell the MapDrawer that here is something thats changed
-                    Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Things, true, false);
+                    map.mapDrawer.MapMeshDirty(Position, MapMeshFlag.Things, true, false);
                 }
             }
 
@@ -181,7 +182,7 @@ namespace WindTurbine
             if ( ticksSinceUpdateWeather >= updateWeatherEveryXTicks )
             {
                 ticksSinceUpdateWeather = 0;
-                WeatherDef weather = Find.WeatherManager.curWeather;
+                WeatherDef weather = map.weatherManager.curWeather;
                 powerComp.PowerOutput = -( powerComp.Props.basePowerConsumption * weather.windSpeedFactor );
 
                 // Just for a little bit randomness..
@@ -292,10 +293,10 @@ namespace WindTurbine
             foundBlocker = null;
             foreach ( IntVec3 cell in checkCells )
             {
-                if ( Find.RoofGrid.Roofed( cell ) )
+                if ( map.roofGrid.Roofed( cell ) )
                     return false;
 
-                foundBlocker = Find.ThingGrid.ThingsAt(cell).FirstOrDefault<Thing>( t => t.def.blockWind );
+                foundBlocker = map.thingGrid.ThingsAt(cell).FirstOrDefault<Thing>( t => t.def.blockWind );
                 if ( foundBlocker != null )
                     return false;
             }
