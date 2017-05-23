@@ -141,10 +141,10 @@ namespace DarkMatterGenerator
         /// <summary>
         /// Do something after the object is spawned
         /// </summary>
-        public override void SpawnSetup()
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             // Do the work of the base class (Building)
-            base.SpawnSetup();
+            base.SpawnSetup(map, respawningAfterLoad);
 
             // Get refferences to the components CompPowerTrader and CompGlower
             SetPowerGlower();
@@ -158,8 +158,8 @@ namespace DarkMatterGenerator
         {
             base.ExposeData();
             // Save and load the work variables, so they don't default after loading
-            Scribe_Values.LookValue<Phase>(ref phase, "phase", Phase.offline);
-            Scribe_Values.LookValue<int>(ref counter, "counter", 0);
+            Scribe_Values.Look<Phase>(ref phase, "phase", Phase.offline);
+            Scribe_Values.Look<int>(ref counter, "counter", 0);
 
             // Set the old value to the phase value
             phaseOld = phase;
@@ -333,12 +333,17 @@ namespace DarkMatterGenerator
             StringBuilder stringBuilder = new StringBuilder();
 
             // Add the inspections string from the base
-            stringBuilder.Append(base.GetInspectString());
+            string baseString = base.GetInspectString();
+            if (!baseString.NullOrEmpty())
+            {
+                stringBuilder.Append(baseString);
 
-            // Add your own strings (caution: string shouldn't be more than 5 lines (including base)!)
-            //stringBuilder.Append("Power output: " + powerComp.powerOutput + " W");
-            //stringBuilder.AppendLine();
-            stringBuilder.AppendLine();
+                // Add your own strings (caution: string shouldn't be more than 5 lines (including base)!)
+                //stringBuilder.Append("Power output: " + powerComp.powerOutput + " W");
+                //stringBuilder.AppendLine();
+                stringBuilder.AppendLine();
+            }
+
             stringBuilder.Append(txtStatus.Translate() + " ");  // <= TRANSLATION
 
             // Phase -> Offline: Add text 'Offline' (Translation from active language file)
@@ -354,7 +359,7 @@ namespace DarkMatterGenerator
                 stringBuilder.Append(txtActive.Translate());    // <= TRANSLATION
 
             // return the complete string
-            return stringBuilder.ToString();
+            return stringBuilder.ToString().TrimEndNewlines();
         }
 
         ///// <summary>

@@ -64,9 +64,9 @@ namespace WindTurbine
         /// <summary>
         /// Do something after the object is spawned into the world
         /// </summary>
-        public override void SpawnSetup()
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            base.SpawnSetup();
+            base.SpawnSetup(map, respawningAfterLoad);
 
             powerComp = base.GetComp<CompPowerTrader>();
             powerComp.PowerOn = true;
@@ -82,7 +82,7 @@ namespace WindTurbine
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.LookValue<int>( ref ticksSinceUpdateWeather, "updateCounter" );
+            Scribe_Values.Look<int>( ref ticksSinceUpdateWeather, "updateCounter" );
         }
 
 
@@ -142,17 +142,19 @@ namespace WindTurbine
             // Call work function
             DoTickerWork( 1 );
 
-            base.TickRare();
+            base.Tick();
         }
 
 
         // Here is the main decision work of this building done
         private void DoTickerWork( int ticks )
         {
+            if (Map == null)
+                return;
 
             // Power off OR Roofed Position
             if ( powerComp == null || !powerComp.PowerOn ||
-                Find.RoofGrid.Roofed( Position ) )
+                Map.roofGrid.Roofed( Position ) )
             {
                 activeGraphicFrame = 0;
                 powerComp.PowerOutput = 0;
@@ -172,7 +174,7 @@ namespace WindTurbine
                         activeGraphicFrame = 0;
 
                     // Tell the MapDrawer that here is something thats changed
-                    Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Things, true, false);
+                    Map.mapDrawer.MapMeshDirty(Position, MapMeshFlag.Things, true, false);
                 }
             }
 
@@ -181,7 +183,7 @@ namespace WindTurbine
             if ( ticksSinceUpdateWeather >= updateWeatherEveryXTicks )
             {
                 ticksSinceUpdateWeather = 0;
-                WeatherDef weather = Find.WeatherManager.curWeather;
+                WeatherDef weather = Map.weatherManager.curWeather;
                 powerComp.PowerOutput = -( powerComp.Props.basePowerConsumption * weather.windSpeedFactor );
 
                 // Just for a little bit randomness..
@@ -239,9 +241,12 @@ namespace WindTurbine
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.Append(base.GetInspectString());
-
-            stringBuilder.AppendLine();
+            string baseString = base.GetInspectString();
+            if (!baseString.NullOrEmpty())
+            {
+                stringBuilder.Append(base.GetInspectString());
+                stringBuilder.AppendLine();
+            }
 
             if ( windPathBlocked )
             {
@@ -253,7 +258,7 @@ namespace WindTurbine
             }
 
             // return the complete string
-            return stringBuilder.ToString();
+            return stringBuilder.ToString().TrimEndNewlines();
         }
 
 
@@ -292,10 +297,10 @@ namespace WindTurbine
             foundBlocker = null;
             foreach ( IntVec3 cell in checkCells )
             {
-                if ( Find.RoofGrid.Roofed( cell ) )
+                if ( Map.roofGrid.Roofed( cell ) )
                     return false;
 
-                foundBlocker = Find.ThingGrid.ThingsAt(cell).FirstOrDefault<Thing>( t => t.def.blockWind );
+                foundBlocker = Map.thingGrid.ThingsAt(cell).FirstOrDefault<Thing>( t => t.def.blockWind );
                 if ( foundBlocker != null )
                     return false;
             }
