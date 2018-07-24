@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Buildings>
+<Defs>
 
 	<!--  Disabled, because it is already defined in the DarkMatterGenerator (Abstracts with the same name must only be defined once!)
 	<ThingDef Name="BuildingBase" Abstract="True">
@@ -15,25 +15,29 @@
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>Example_WindTurbineGenerator</defName>
-		<thingClass>WindTurbine.Building_WindTurbineEx</thingClass>
 		<label>Wind Turbine</label>
 		<description>A turbine harnessing wind to generate power.</description>
+		<thingClass>WindTurbine.Building_WindTurbineEx</thingClass>
 		<graphicData>
 			<texPath>Things/Building/WindTurbine/wind turbine_frame1</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,2)</drawSize>
 			<shadowData>
-				<volume>(0.2, 1.0, 0.8)</volume>
+				<volume>(0.6, 1.0, 1.6)</volume>
+				<offset>(-0.1,0,-0.08)</offset>
 			</shadowData>
+			<damageData>
+				<rect>(2,0.15,1,1.4)</rect>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
-		<pathCost>150</pathCost>
+    <blockWind>true</blockWind>
 		<fillPercent>0.5</fillPercent>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
 			<WorkToMake>3300</WorkToMake>
-			<Flammability>0.4</Flammability>
+			<Flammability>0.5</Flammability>
 			<Beauty>-12</Beauty>
 		</statBases>
 		<tickerType>Normal</tickerType>
@@ -42,12 +46,14 @@
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<rotatable>true</rotatable>
 		<designationCategory>Power</designationCategory>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<building>
-			<ignoreNeedsPower>true</ignoreNeedsPower>
+	  <ai_chillDestination>false</ai_chillDestination>
+      <allowAutoroof>false</allowAutoroof>
 		</building>
 		<costList>
 			<Steel>100</Steel>
-			<Component>2</Component>
+			<ComponentIndustrial>2</ComponentIndustrial>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
 		<placeWorkers>
@@ -61,6 +67,7 @@
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
 	</ThingDef>
 
-</Buildings>
+</Defs>

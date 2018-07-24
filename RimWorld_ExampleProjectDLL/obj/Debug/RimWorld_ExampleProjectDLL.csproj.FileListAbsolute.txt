@@ -1,0 +1,5 @@
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\bin\Debug\RimWorldExampleProjectDLL.dll
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\bin\Debug\RimWorldExampleProjectDLL.pdb
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorld_ExampleProjectDLL.csprojResolveAssemblyReference.cache
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorldExampleProjectDLL.dll
+D:\_Programmierung\_GitHub_Repositories\Ludeon\ExampleDllMod\RimWorld_ExampleProjectDLL\obj\Debug\RimWorldExampleProjectDLL.pdb
